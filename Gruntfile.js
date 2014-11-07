@@ -39,7 +39,7 @@ module.exports = function(grunt) {
         options: {
           // includePaths: ['bower_components/foundation/scss','bower_components/font-awesome/scss'],
           style: 'compact',
-          sourceMap: '../css/miranda.css.map'
+          sourceMap: '../css/styles.css.map'
         },
         files: {
           'build/css/styles.css':'scss/styles.scss'
