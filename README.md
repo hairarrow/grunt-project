@@ -5,8 +5,8 @@ Web Development with Grunt, Grunt Templating Task and SCSS.
 1. Clone This
 2. `mv /path/to/repo/grunt-project /path/to/repo/{Project Name}`
 3. cd into the project
-4. `git remote remove origin`
-5. Change `README.md`
+4. `rm -rf .git`
+5. `git init`
 6. Add the new repo `git remote add origin {new git repo}`
 7. `git push -u origin master`
 8. run `npm install` (sudo if you get any access errors)
@@ -22,7 +22,7 @@ Web Development with Grunt, Grunt Templating Task and SCSS.
 - html hint
 - csslint
 - git deploy
-- Template (From Sorin) 
+- Template (From Sorin)
 
 ## Grunt Tasks
 - `build` compiles SCSS and Template Files
