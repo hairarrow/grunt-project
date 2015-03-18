@@ -1,6 +1,8 @@
 {
-  "name": "foundation-libsass-template",
+  "name": "Project Name",,
   "version": "0.0.1",
+  "private": true,
+  "dependencies": {},
   "scripts": {
     "build": "grunt build",
     "install": "npm install && bower install && grunt build"
