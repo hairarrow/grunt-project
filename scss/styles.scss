@@ -3,9 +3,11 @@
 $ocean: #393F4B;
 $gold: #F9D7AF;
 
+$easeInOutCubic: cubic-bezier(0.645, 0.045, 0.355, 1.000);
+$easeOutBack: cubic-bezier(0.845, 0.485, 0.795, 1.425);
+
 body {
-  background: linear-gradient(160deg, rgba(black, 0) 10%, black) no-repeat center center fixed, $ocean;
-  background: linear-gradient($ocean 10%, mix($ocean, black, 20)) no-repeat center center fixed;
+  background: linear-gradient(160deg, $ocean 5%, mix($ocean, black, 40) 35%) no-repeat center center fixed;
   background-size: cover;
   font: 300 16px sans-serif;
   height: 100%; width: 100%;
@@ -13,46 +15,108 @@ body {
 
 
 header {
-  position: relative;
-  top: 200px; 
   margin: auto;
   width: 80%;
   max-width: 320px;
   text-align: center;
-  $animation: scale 2s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+  $transform: scale(.8) translate(0, 0);
+  -webkit-transform: $transform;
+  transform: $transform;
+  $animation: scale 3s $easeInOutCubic, scale2 2s $easeInOutCubic 3s; 
   -webkit-animation: $animation;   
   animation: $animation;   
 
   h1 {
-    color: $gold;
-    text-shadow: 0 0 5px rgba($gold, .6);
     font-size: 3em;
     font-weight: 400;
     line-height: 2em;
+    color: $gold;
+    text-shadow: 0 0 5px rgba($gold, .6);
     border-bottom: 1px solid $gold;
   }
 
   h2 {
+    line-height: 4.5;
     color: rgba($gold, .6);
     text-shadow: 0 0 3px rgba($gold, .2);
-    line-height: 4.5;
   }
 }
 
-
-
 @mixin scaleFrom {
-  -webkit-transform: scale(3);
+  $transform: scale(3) translate(0, 200px);
+  -webkit-transform: $transform;
+  transform: $transform;
   opacity: 0;
 }
 
 @mixin scaleTo {
-  -webkit-transform: scale(1);
+  $transform: translate(0, 200px);
+  -webkit-transform: $transform;
+  transform: $transform; 
   opacity: 1;
 }
 
-@-webkit-keyframes scale {
+@mixin animScale {
   from { @include scaleFrom; }
-  to { @include scaleTo; }
+  50%, 100% { @include scaleTo; }
 }
 
+@-webkit-keyframes scale { @include animScale; }
+@keyframes scale { @include animScale; }
+
+@mixin scale2From {
+  $transform: translate(0, 200px);
+  -webkit-transform: $transform;
+  transform: $transform;
+}
+
+@mixin scale2To {
+  $transform: scale(.8) translate(0, 0);
+  -webkit-transform: $transform;
+  transform: $transform;
+}
+
+@mixin animScale2 {
+  from { @include scale2From; }
+  to { @include scale2To; }
+}
+
+@-webkit-keyframes scale2 { @include animScale2; }
+@keyframes scale2 { @include animScale2; }
+
+section {
+  margin: 8% auto;
+  padding: 8%;
+  width: 88%;
+  max-width: 680px;
+  background: white;
+  border-radius: 4px;
+  line-height: 1.6;
+  box-shadow: 0 2px 8px rgba(black, .2);
+  $animation: fade 5s $easeInOutCubic;
+  -webkit-animation: $animation; 
+  animation: $animation; 
+
+  h2,  p { margin-bottom: 20px; }
+
+  h2 { font-size: 1.3125em; }
+}
+
+@mixin fadeFrom {
+  $transform: scale(.6);
+  -webkit-transform: $transform;
+  transform: $transform;
+  opacity: 0;
+}
+
+@mixin fadeTo {
+  opacity: 1;
+}
+
+@mixin animFade {
+  0%, 60% { @include fadeFrom; }
+  100% { @include fadeTo; }
+}
+
+@-webkit-keyframes fade { @include animFade; }
+@keyframes fade { @include animFade; }
